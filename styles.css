@@ -177,9 +177,9 @@ button, input, select, textarea {
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: 1.04fr 0.82fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.78fr);
   align-items: center;
-  gap: 70px;
+  gap: clamp(34px, 5vw, 72px);
 }
 
 .eyebrow {
@@ -289,6 +289,8 @@ h3 {
 
 .hero-media {
   position: relative;
+  width: min(100%, 430px);
+  justify-self: end;
 }
 
 .portrait-frame {
@@ -299,6 +301,7 @@ h3 {
   padding: 12px;
   background: linear-gradient(135deg, rgba(244,239,228,.12), rgba(244,239,228,.02));
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .portrait-frame::before {
@@ -312,15 +315,16 @@ h3 {
 
 .portrait-frame img {
   width: 100%;
-  aspect-ratio: 4 / 5.15;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: 50% 25%;
   border-radius: 24px;
 }
 
 .floating-note {
   position: absolute;
-  left: -34px;
-  bottom: 40px;
+  left: -24px;
+  bottom: 34px;
   display: grid;
   gap: 2px;
   padding: 18px 20px;
@@ -812,7 +816,8 @@ figcaption {
   }
 
   .hero-media {
-    max-width: 560px;
+    max-width: 460px;
+    justify-self: start;
   }
 
   .sticky-intro {
@@ -875,7 +880,23 @@ figcaption {
   }
 
   .hero-grid {
-    gap: 42px;
+    gap: 24px;
+  }
+
+  .hero-media {
+    width: min(100%, 360px);
+    justify-self: center;
+  }
+
+  .portrait-frame {
+    padding: 9px;
+    border-radius: 28px;
+  }
+
+  .portrait-frame img {
+    aspect-ratio: 4 / 5;
+    object-position: 52% 22%;
+    border-radius: 20px;
   }
 
   .hero-stats {
@@ -883,8 +904,10 @@ figcaption {
   }
 
   .floating-note {
-    left: 16px;
-    bottom: 24px;
+    left: 14px;
+    bottom: 16px;
+    padding: 12px 15px;
+    max-width: calc(100% - 28px);
   }
 
   .image-pair, .service-grid, .media-grid, .rate-grid, .mini-grid {
